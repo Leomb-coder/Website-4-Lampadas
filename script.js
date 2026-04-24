@@ -48,6 +48,7 @@ function enviarMensagem(topico, payload = "") {
 // Lâmpada Sala
 function ligarLampadaSala() {
     lampada = document.getElementById("lp-sala")
+    lampada.classList.remove("apagada")
     lampada.classList.add("acesa")
     lampada.nextElementSibling.textContent = "Ligada"
 
@@ -57,6 +58,7 @@ function ligarLampadaSala() {
 function desligarLampadaSala() {
     lampada = document.getElementById("lp-sala")
     lampada.classList.remove("acesa")
+    lampada.classList.add("apagada")
     lampada.nextElementSibling.textContent = "Desligada"
 
     enviarMensagem("senai510/lampada/sala/desligar")
@@ -65,6 +67,7 @@ function desligarLampadaSala() {
 // Lâmpada Cozinha
 function ligarLampadaCozinha() {
     lampada = document.getElementById("lp-cozinha")
+    lampada.classList.remove("apagada")
     lampada.classList.add("acesa")
     lampada.nextElementSibling.textContent = "Ligada"
 
@@ -74,6 +77,7 @@ function ligarLampadaCozinha() {
 function desligarLampadaCozinha() {
     lampada = document.getElementById("lp-cozinha")
     lampada.classList.remove("acesa")
+    lampada.classList.add("apagada")
     lampada.nextElementSibling.textContent = "Desligada"
 
     enviarMensagem("senai510/lampada/cozinha/desligar")
@@ -82,6 +86,7 @@ function desligarLampadaCozinha() {
 // Lâmpada Quarto 1
 function ligarLampadaQuarto1() {
     lampada = document.getElementById("lp-quarto1")
+    lampada.classList.remove("apagada")
     lampada.classList.add("acesa")
     lampada.nextElementSibling.textContent = "Ligada"
 
@@ -91,6 +96,7 @@ function ligarLampadaQuarto1() {
 function desligarLampadaQuarto1() {
     lampada = document.getElementById("lp-quarto1")
     lampada.classList.remove("acesa")
+    lampada.classList.add("apagada")
     lampada.nextElementSibling.textContent = "Desligada"
 
     enviarMensagem("senai510/lampada/quarto1/desligar")
@@ -99,6 +105,7 @@ function desligarLampadaQuarto1() {
 // Lâmpada Quarto 2
 function ligarLampadaQuarto2() {
     lampada = document.getElementById("lp-quarto2")
+    lampada.classList.remove("apagada")
     lampada.classList.add("acesa")
     lampada.nextElementSibling.textContent = "Ligada"
 
@@ -108,6 +115,7 @@ function ligarLampadaQuarto2() {
 function desligarLampadaQuarto2() {
     lampada = document.getElementById("lp-quarto2")
     lampada.classList.remove("acesa")
+    lampada.classList.add("apagada")
     lampada.nextElementSibling.textContent = "Desligada"
 
     enviarMensagem("senai510/lampada/quarto2/desligar")
