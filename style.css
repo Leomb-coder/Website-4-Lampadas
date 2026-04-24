@@ -470,11 +470,22 @@ body {
 
     .header-all-control {
         width: 100%;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        margin-left: 0;
-        border-radius: 8px;
+        max-width: 100%;
+        overflow: hidden; /* impede vazamento visual */
+    }
+
+    .header-all-buttons {
+        flex-wrap: wrap; /* permite quebrar linha */
+        justify-content: flex-end;
+    }
+
+    .btn-all {
+        flex: 1 1 auto; /* permite encolher */
+        min-width: 0;   /* evita overflow */
+    }
+
+    .header-all-label {
+        white-space: normal; /* permite quebrar texto */
     }
 
     .container {
