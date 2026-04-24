@@ -27,6 +27,18 @@
                 <span class="header-label">Painel de Controle</span>
                 <span class="header-sub">Sistema IoT de Iluminação</span>
             </div>
+
+            <div class="header-all-control">
+                <span class="header-all-label">⚡ Todas as Lâmpadas</span>
+                <div class="header-all-buttons">
+                    <button class="btn-all ligar-all" onclick="ligarTodasLampadas()">
+                        <span>◉</span> Ligar Todas
+                    </button>
+                    <button class="btn-all desligar-all" onclick="desligarTodasLampadas()">
+                        <span>◎</span> Desligar Todas
+                    </button>
+                </div>
+            </div>
         </div>
         <div class="header-stripe"></div>
     </header>
@@ -93,10 +105,10 @@
                     <span class="status-label">Desligada</span>
                 </div>
                 <div class="botoes">
-                    <button class="btn ligar" onclick="ligarLampadaCozinha()">
+                    <button class="btn ligar">
                         <span class="btn-icon">◉</span> Ligar
                     </button>
-                    <button class="btn desligar" onclick="desligarLampadaCozinha()">
+                    <button class="btn desligar">
                         <span class="btn-icon">◎</span> Desligar
                     </button>
                 </div>
@@ -124,10 +136,10 @@
                     <span class="status-label">Desligada</span>
                 </div>
                 <div class="botoes">
-                    <button class="btn ligar" onclick="ligarLampadaQuarto1()">
+                    <button class="btn ligar">
                         <span class="btn-icon">◉</span> Ligar
                     </button>
-                    <button class="btn desligar" onclick="desligarLampadaQuarto1()">
+                    <button class="btn desligar">
                         <span class="btn-icon">◎</span> Desligar
                     </button>
                 </div>
@@ -141,7 +153,7 @@
                     <h2>Quarto 2</h2>
                 </div>
                 <div class="lampada-wrapper">
-                    <div id="lp-quarto2" class="lampada apagada">
+                    <div id="lp-todas" class="lampada apagada">
                         <div class="lampada-glow"></div>
                         <svg class="bulb-icon" viewBox="0 0 64 80" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M32 4C20.954 4 12 12.954 12 24C12 31.5 16 38 22 42V52H42V42C48 38 52 31.5 52 24C52 12.954 43.046 4 32 4Z" class="bulb-body"/>
@@ -155,10 +167,10 @@
                     <span class="status-label">Desligada</span>
                 </div>
                 <div class="botoes">
-                    <button class="btn ligar" onclick="ligarLampadaQuarto2()">
+                    <button class="btn ligar">
                         <span class="btn-icon">◉</span> Ligar
                     </button>
-                    <button class="btn desligar" onclick="desligarLampadaQuarto2()">
+                    <button class="btn desligar">
                         <span class="btn-icon">◎</span> Desligar
                     </button>
                 </div>

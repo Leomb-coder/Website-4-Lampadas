@@ -112,3 +112,28 @@ function desligarLampadaQuarto2() {
 
     enviarMensagem("senai510/lampada/quarto2/desligar")
 }
+
+// Todas as Lâmpadas
+function ligarTodasLampadas() {
+    const lampadas = document.getElementsByClassName("lampada");
+
+    for (let lampada of lampadas) {
+        lampada.classList.remove("apagada");
+        lampada.classList.add("acesa");
+        lampada.nextElementSibling.textContent = "Ligada";
+    }
+
+    enviarMensagem("senai510/lampada/ligar");
+}
+
+function desligarTodasLampadas() {
+    const lampadas = document.getElementsByClassName("lampada");
+
+    for (let lampada of lampadas) {
+        lampada.classList.remove("acesa");
+        lampada.classList.add("apagada");
+        lampada.nextElementSibling.textContent = "Desligada";
+    }
+
+    enviarMensagem("senai510/lampada/desligar");
+}
