@@ -1,0 +1,414 @@
+/* ===========================
+   SENAI IoT Panel — style.css
+   =========================== */
+
+/* ---------- CSS Variables ---------- */
+:root {
+    --senai-red:       #CC0000;
+    --senai-red-dark:  #990000;
+    --senai-red-light: #FF2222;
+    --white:           #FFFFFF;
+    --off-white:       #F5F5F5;
+    --light-gray:      #EBEBEB;
+    --mid-gray:        #AAAAAA;
+    --dark:            #1A1A1A;
+    --card-bg:         #FFFFFF;
+    --shadow-sm:       0 2px 8px rgba(0,0,0,0.08);
+    --shadow-md:       0 6px 24px rgba(0,0,0,0.12);
+    --shadow-lg:       0 12px 40px rgba(0,0,0,0.16);
+    --radius:          16px;
+    --transition:      0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Lamp ON state */
+    --lamp-on-color:   #FFD700;
+    --lamp-on-glow:    rgba(255, 215, 0, 0.45);
+}
+
+/* ---------- Reset & Base ---------- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Barlow', sans-serif;
+    background-color: var(--off-white);
+    background-image:
+        radial-gradient(circle at 10% 20%, rgba(204,0,0,0.05) 0%, transparent 50%),
+        radial-gradient(circle at 90% 80%, rgba(204,0,0,0.04) 0%, transparent 50%);
+    min-height: 100vh;
+    color: var(--dark);
+    display: flex;
+    flex-direction: column;
+}
+
+/* ---------- Header ---------- */
+.header {
+    background: var(--white);
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 16px 40px;
+}
+
+.logo {
+    height: 56px;
+    width: auto;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.header-title {
+    display: flex;
+    flex-direction: column;
+    border-left: 3px solid var(--senai-red);
+    padding-left: 20px;
+}
+
+.header-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--senai-red);
+    line-height: 1.1;
+}
+
+.header-sub {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--mid-gray);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.header-stripe {
+    height: 4px;
+    background: linear-gradient(90deg, var(--senai-red) 0%, var(--senai-red-light) 60%, transparent 100%);
+}
+
+/* ---------- Main Container ---------- */
+.container {
+    flex: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 24px 60px;
+    width: 100%;
+}
+
+/* ---------- Section Title ---------- */
+.section-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--senai-red);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 28px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--light-gray);
+}
+
+.section-icon {
+    font-size: 1.3rem;
+}
+
+/* ---------- Grid ---------- */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+/* ---------- Card ---------- */
+.card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 0 24px;
+    position: relative;
+    border: 1.5px solid var(--light-gray);
+    transition: box-shadow var(--transition), transform var(--transition);
+}
+
+.card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-3px);
+}
+
+.card-accent {
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--senai-red-dark), var(--senai-red-light));
+    margin-bottom: 20px;
+}
+
+/* ---------- Card Header ---------- */
+.card-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 0 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.room-icon {
+    font-size: 1.6rem;
+    line-height: 1;
+}
+
+.card-header h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--dark);
+}
+
+/* ---------- Lamp ---------- */
+.lampada-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 22px;
+}
+
+.lampada {
+    position: relative;
+    width: 90px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background var(--transition), box-shadow var(--transition);
+}
+
+.lampada-glow {
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--lamp-on-glow) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity var(--transition);
+    pointer-events: none;
+}
+
+/* OFF state */
+.lampada.apagada {
+    background: var(--light-gray);
+    box-shadow: none;
+}
+
+.lampada.apagada .bulb-body {
+    fill: #CCCCCC;
+}
+
+.lampada.apagada .bulb-base {
+    fill: #AAAAAA;
+}
+
+.lampada.apagada .bulb-filament {
+    stroke: #999999;
+}
+
+/* ON state */
+.lampada.acesa {
+    background: rgba(255, 215, 0, 0.12);
+    box-shadow: 0 0 24px 8px rgba(255, 215, 0, 0.35);
+    animation: pulseGlow 2s ease-in-out infinite;
+}
+
+.lampada.acesa .lampada-glow {
+    opacity: 1;
+}
+
+.lampada.acesa .bulb-body {
+    fill: var(--lamp-on-color);
+    filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.8));
+}
+
+.lampada.acesa .bulb-base {
+    fill: #D4A000;
+}
+
+.lampada.acesa .bulb-filament {
+    stroke: #FFF5B0;
+}
+
+@keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 24px 8px rgba(255, 215, 0, 0.35); }
+    50%       { box-shadow: 0 0 36px 16px rgba(255, 215, 0, 0.55); }
+}
+
+/* SVG icon */
+.bulb-icon {
+    width: 52px;
+    height: 52px;
+    position: relative;
+    z-index: 1;
+}
+
+.bulb-body,
+.bulb-base {
+    transition: fill var(--transition);
+}
+
+.bulb-filament {
+    transition: stroke var(--transition);
+    stroke-linecap: round;
+}
+
+/* Status label */
+.status-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--mid-gray);
+    transition: color var(--transition);
+}
+
+.lampada.acesa ~ .status-label {
+    color: #B8860B;
+}
+
+/* ---------- Buttons ---------- */
+.botoes {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: calc(100% - 32px);
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 16px;
+    cursor: pointer;
+    transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.15);
+    opacity: 0;
+    transition: opacity 0.15s;
+}
+
+.btn:hover::after { opacity: 1; }
+.btn:active { transform: scale(0.97); }
+
+.btn-icon {
+    font-size: 0.9rem;
+    line-height: 1;
+}
+
+/* Ligar */
+.btn.ligar {
+    background: var(--senai-red);
+    color: var(--white);
+    box-shadow: 0 3px 12px rgba(204,0,0,0.3);
+}
+
+.btn.ligar:hover {
+    background: var(--senai-red-light);
+    box-shadow: 0 4px 16px rgba(204,0,0,0.45);
+}
+
+/* Desligar */
+.btn.desligar {
+    background: var(--white);
+    color: var(--senai-red);
+    border: 2px solid var(--senai-red);
+}
+
+.btn.desligar:hover {
+    background: #FFF0F0;
+}
+
+/* ---------- Footer ---------- */
+.footer {
+    background: var(--dark);
+    color: var(--mid-gray);
+    text-align: center;
+    padding: 16px 24px;
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 540px) {
+    .header-inner {
+        padding: 14px 20px;
+        gap: 14px;
+    }
+
+    .logo {
+        height: 40px;
+    }
+
+    .header-label {
+        font-size: 1rem;
+    }
+
+    .header-sub {
+        font-size: 0.7rem;
+    }
+
+    .container {
+        padding: 24px 16px 40px;
+    }
+
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+    }
+}
+
+@media (max-width: 360px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="mqttws31.js" defer></script>
+    <script src="script.js" defer></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <title>Painel IoT SENAI</title>
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-inner">
+            <img 
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/SENAI_S%C3%A3o_Paulo_logo.png/1280px-SENAI_S%C3%A3o_Paulo_logo.png" 
+                alt="SENAI São Paulo" 
+                class="logo"
+            >
+            <div class="header-title">
+                <span class="header-label">Painel de Controle</span>
+                <span class="header-sub">Sistema IoT de Iluminação</span>
+            </div>
+        </div>
+        <div class="header-stripe"></div>
+    </header>
+
+    <main class="container">
+
+        <div class="section-title">
+            <span class="section-icon">⚡</span>
+            Gerenciamento de Lâmpadas
+        </div>
+
+        <div class="grid">
+
+            <!-- SALA -->
+            <div class="card" data-room="sala">
+                <div class="card-accent"></div>
+                <div class="card-header">
+                    <span class="room-icon">🛋️</span>
+                    <h2>Sala</h2>
+                </div>
+                <div class="lampada-wrapper">
+                    <div id="lp-sala" class="lampada apagada">
+                        <div class="lampada-glow"></div>
+                        <svg class="bulb-icon" viewBox="0 0 64 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M32 4C20.954 4 12 12.954 12 24C12 31.5 16 38 22 42V52H42V42C48 38 52 31.5 52 24C52 12.954 43.046 4 32 4Z" class="bulb-body"/>
+                            <rect x="22" y="54" width="20" height="4" rx="2" class="bulb-base"/>
+                            <rect x="24" y="60" width="16" height="4" rx="2" class="bulb-base"/>
+                            <rect x="27" y="66" width="10" height="4" rx="2" class="bulb-base"/>
+                            <line x1="32" y1="14" x2="32" y2="26" class="bulb-filament" stroke-width="2"/>
+                            <line x1="27" y1="19" x2="37" y2="19" class="bulb-filament" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <span class="status-label">Desligada</span>
+                </div>
+                <div class="botoes">
+                    <button class="btn ligar" onclick="ligarLampadaSala()">
+                        <span class="btn-icon">◉</span> Ligar
+                    </button>
+                    <button class="btn desligar" onclick="desligarLampadaSala()">
+                        <span class="btn-icon">◎</span> Desligar
+                    </button>
+                </div>
+            </div>
+
+            <!-- COZINHA -->
+            <div class="card" data-room="cozinha">
+                <div class="card-accent"></div>
+                <div class="card-header">
+                    <span class="room-icon">🍳</span>
+                    <h2>Cozinha</h2>
+                </div>
+                <div class="lampada-wrapper">
+                    <div id="lp-cozinha" class="lampada apagada">
+                        <div class="lampada-glow"></div>
+                        <svg class="bulb-icon" viewBox="0 0 64 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M32 4C20.954 4 12 12.954 12 24C12 31.5 16 38 22 42V52H42V42C48 38 52 31.5 52 24C52 12.954 43.046 4 32 4Z" class="bulb-body"/>
+                            <rect x="22" y="54" width="20" height="4" rx="2" class="bulb-base"/>
+                            <rect x="24" y="60" width="16" height="4" rx="2" class="bulb-base"/>
+                            <rect x="27" y="66" width="10" height="4" rx="2" class="bulb-base"/>
+                            <line x1="32" y1="14" x2="32" y2="26" class="bulb-filament" stroke-width="2"/>
+                            <line x1="27" y1="19" x2="37" y2="19" class="bulb-filament" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <span class="status-label">Desligada</span>
+                </div>
+                <div class="botoes">
+                    <button class="btn ligar" onclick="ligarLampadaCozinha()">
+                        <span class="btn-icon">◉</span> Ligar
+                    </button>
+                    <button class="btn desligar" onclick="desligarLampadaCozinha()">
+                        <span class="btn-icon">◎</span> Desligar
+                    </button>
+                </div>
+            </div>
+
+            <!-- QUARTO 1 -->
+            <div class="card" data-room="quarto1">
+                <div class="card-accent"></div>
+                <div class="card-header">
+                    <span class="room-icon">🛏️</span>
+                    <h2>Quarto 1</h2>
+                </div>
+                <div class="lampada-wrapper">
+                    <div id="lp-quarto1" class="lampada apagada">
+                        <div class="lampada-glow"></div>
+                        <svg class="bulb-icon" viewBox="0 0 64 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M32 4C20.954 4 12 12.954 12 24C12 31.5 16 38 22 42V52H42V42C48 38 52 31.5 52 24C52 12.954 43.046 4 32 4Z" class="bulb-body"/>
+                            <rect x="22" y="54" width="20" height="4" rx="2" class="bulb-base"/>
+                            <rect x="24" y="60" width="16" height="4" rx="2" class="bulb-base"/>
+                            <rect x="27" y="66" width="10" height="4" rx="2" class="bulb-base"/>
+                            <line x1="32" y1="14" x2="32" y2="26" class="bulb-filament" stroke-width="2"/>
+                            <line x1="27" y1="19" x2="37" y2="19" class="bulb-filament" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <span class="status-label">Desligada</span>
+                </div>
+                <div class="botoes">
+                    <button class="btn ligar" onclick="ligarLampadaQuarto1()">
+                        <span class="btn-icon">◉</span> Ligar
+                    </button>
+                    <button class="btn desligar" onclick="desligarLampadaQuarto1()">
+                        <span class="btn-icon">◎</span> Desligar
+                    </button>
+                </div>
+            </div>
+
+            <!-- QUARTO 2 -->
+            <div class="card" data-room="quarto2">
+                <div class="card-accent"></div>
+                <div class="card-header">
+                    <span class="room-icon">🛏️</span>
+                    <h2>Quarto 2</h2>
+                </div>
+                <div class="lampada-wrapper">
+                    <div id="lp-quarto2" class="lampada apagada">
+                        <div class="lampada-glow"></div>
+                        <svg class="bulb-icon" viewBox="0 0 64 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M32 4C20.954 4 12 12.954 12 24C12 31.5 16 38 22 42V52H42V42C48 38 52 31.5 52 24C52 12.954 43.046 4 32 4Z" class="bulb-body"/>
+                            <rect x="22" y="54" width="20" height="4" rx="2" class="bulb-base"/>
+                            <rect x="24" y="60" width="16" height="4" rx="2" class="bulb-base"/>
+                            <rect x="27" y="66" width="10" height="4" rx="2" class="bulb-base"/>
+                            <line x1="32" y1="14" x2="32" y2="26" class="bulb-filament" stroke-width="2"/>
+                            <line x1="27" y1="19" x2="37" y2="19" class="bulb-filament" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <span class="status-label">Desligada</span>
+                </div>
+                <div class="botoes">
+                    <button class="btn ligar" onclick="ligarLampadaQuarto2()">
+                        <span class="btn-icon">◉</span> Ligar
+                    </button>
+                    <button class="btn desligar" onclick="desligarLampadaQuarto2()">
+                        <span class="btn-icon">◎</span> Desligar
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <span>SENAI São Paulo &mdash; Painel IoT &copy; 2025</span>
+    </footer>
+
+</body>
+</html>
