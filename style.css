@@ -43,9 +43,68 @@ body {
     flex-direction: column;
 }
 
-/* ---------- Header All Control ---------- */
-.header-all-control {
+/* ---------- Header ---------- */
+.header {
+    background: var(--white);
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 16px 40px;
+}
+
+.logo {
+    height: 56px;
+    width: auto;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.header-title {
+    display: flex;
+    flex-direction: column;
+    border-left: 3px solid var(--senai-red);
+    padding-left: 20px;
+}
+
+.header-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--senai-red);
+    line-height: 1.1;
+}
+
+.header-sub {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--mid-gray);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.header-stripe {
+    height: 4px;
+    background: linear-gradient(90deg, var(--senai-red) 0%, var(--senai-red-light) 60%, transparent 100%);
+}
+
+/* ---------- Header Controls Group ---------- */
+.header-controls-group {
     margin-left: auto;
+    display: flex;
+    gap: 12px;
+    align-items: stretch;
+}
+
+.header-all-control {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -111,59 +170,6 @@ body {
 .btn-all.desligar-all:hover {
     background: rgba(255,255,255,0.1);
     border-color: var(--white);
-}
-
-/* ---------- Header ---------- */
-.header {
-    background: var(--white);
-    box-shadow: var(--shadow-sm);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
-
-.header-inner {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    padding: 16px 40px;
-}
-
-.logo {
-    height: 56px;
-    width: auto;
-    object-fit: contain;
-    flex-shrink: 0;
-}
-
-.header-title {
-    display: flex;
-    flex-direction: column;
-    border-left: 3px solid var(--senai-red);
-    padding-left: 20px;
-}
-
-.header-label {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 1.25rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--senai-red);
-    line-height: 1.1;
-}
-
-.header-sub {
-    font-size: 0.8rem;
-    font-weight: 500;
-    color: var(--mid-gray);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-}
-
-.header-stripe {
-    height: 4px;
-    background: linear-gradient(90deg, var(--senai-red) 0%, var(--senai-red-light) 60%, transparent 100%);
 }
 
 /* ---------- Main Container ---------- */
@@ -451,8 +457,8 @@ body {
 
 @media (max-width: 540px) {
     .header-inner {
-        padding: 14px 20px;
-        gap: 14px;
+        padding: 14px 16px;
+        gap: 12px;
         flex-wrap: wrap;
     }
 
@@ -468,24 +474,41 @@ body {
         font-size: 0.7rem;
     }
 
-    .header-all-control {
+    /* Os dois cards ficam lado a lado ocupando toda a largura */
+    .header-controls-group {
         width: 100%;
-        max-width: 100%;
-        overflow: hidden; /* impede vazamento visual */
+        margin-left: 0;
+        gap: 8px;
     }
 
-    .header-all-buttons {
-        flex-wrap: wrap; /* permite quebrar linha */
-        justify-content: flex-end;
-    }
-
-    .btn-all {
-        flex: 1 1 auto; /* permite encolher */
-        min-width: 0;   /* evita overflow */
+    .header-all-control {
+        flex: 1;
+        align-items: center;
+        padding: 8px 10px;
     }
 
     .header-all-label {
-        white-space: normal; /* permite quebrar texto */
+        font-size: 0.7rem;
+        white-space: normal;
+        text-align: center;
+    }
+
+    .header-all-buttons {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 6px;
+    }
+
+    .btn-all {
+        flex: 1 1 auto;
+        min-width: 0;
+        font-size: 0.72rem;
+        padding: 6px 8px;
+        justify-content: center;
+        width: 100%;
     }
 
     .container {

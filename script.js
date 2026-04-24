@@ -1,5 +1,6 @@
 let clienteweb = null
 const clienteId = "Esp32LMB_" + Math.random().toString(16).substr(2, 8)
+const audio = new Audio('audio.mp3')
 
 // Criando cliente MQTT (WebSocket seguro)
 clienteweb = new Paho.MQTT.Client(
@@ -182,6 +183,7 @@ function alternarLampadas() {
 }
 
 function piscarTodasLampadas() {
+    audio.play();
     if (piscando) return; // evita duplicar
 
     piscando = true;
@@ -195,6 +197,7 @@ function piscarTodasLampadas() {
 }
 
 function pararPiscarLampadas() {
+    audio.pause();
     if (intervaloPisca) {
         clearInterval(intervaloPisca);
         intervaloPisca = null;
